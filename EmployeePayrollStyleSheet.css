@@ -131,6 +131,26 @@ select{
     border: 1px solid #707070;
     cursor: pointer;
 }
+.buttonParent{
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.button{
+    font-size: 20px;
+    font-family: Roboto;
+    letter-spacing: 0px;
+    color: #42515f;
+    opacity: 1;
+    background: transparent;
+    border: none;
+    font-weight: 400;
+    min-width: 140px;
+    padding: 7px 7px;
+    border: 1px solid #707070;
+    cursor: pointer;
+}
 .submitButton{
     border: none;
     background: #f5f5f5;
@@ -139,6 +159,24 @@ select{
 .cancelButton{
     text-decoration: none;
     text-align: center;
+}
+#submitButton:hover, #resetButton:hover, #cancelButton:hover{
+    background-color: rgb(72, 194, 55);
+    color: white;
+}
+#submitButton:active, #resetButton:active, #cancelButton:active{
+    background-color: rgb(69, 55, 194);
+    color: rgb(0, 0, 0);
+}
+.cancelButton{
+    text-decoration: none;
+    text-align: center;
+}
+error-output{
+    margin-left: 80%;
+    font-size: 15px;
+    font-style: bold;
+    color: red;
 }
 @media only screen and (max-width: 960px){
     .cancelButton{
@@ -177,3 +215,4 @@ select{
         flex-direction: column-reverse;
         align-items: flex-start;
     }
+}
