@@ -1,12 +1,22 @@
+let employeePayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
+    employeePayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = employeePayrollList.length;
     createInnerHtml();
+    localStorage.removeItem('editEmp');
 });
+
+const getEmployeePayrollDataFromStorage = () => {
+    return localStorage.getItem('EmployeePayrollList') ?
+                        JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
 
 // Template literal ES6 feature
 const createInnerHtml = () => {
     const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th>"+
                         "<th>Salary</th><th>Start Date</th><th>Actions</th>";
-    const innerHtml = `${headerHtml}`;
+    if(employeePayrollList.length==0)return;                    
+    let innerHtml = `${headerHtml}`;
     let employeePayrollList = createEmployeePayrollJSON();
     for (const employeePayrollData of employeePayrollList) {
         innerHtml = `${innerHtml}
@@ -36,33 +46,3 @@ const getDeptHtml = (deptList) => {
     return deptHtml;
 }
 
-const createEmployeePayrollJSON = () => {
-    let employeePayrollListLocal = [
-        {
-            _name: 'Kruti Patil',
-            _gender: 'Female',
-            _department: [
-                'Finance',
-                'HR'
-            ],
-            _salary: '300000',
-            _startDate: '1 Nov 2020',
-            _note: '',
-            _id: new Date().getTime(),
-            _profilePic: './assets/profile-images/Ellipse -7.png'
-        },
-        {
-            _name: 'Darshna Suryawanshi',
-            _gender: 'Female',
-            _department: [
-                'Sales'
-            ],
-            _salary: '400000',
-            _startDate: '20 Oct 2019',
-            _note: '',
-            _id: new Date().getTime() + 1,
-            _profilePic: './assets/profile-images/Ellipse -10.png'
-        }
-    ];
-    return employeePayrollListLocal;
-}
