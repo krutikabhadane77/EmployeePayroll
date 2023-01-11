@@ -15,7 +15,7 @@ class EmployeePayrollData{
          let nameREgex = RegExp('^[A-Z]{1}[a-z]{2,}$');
          if(nameREgex.test(name))
          this._name = name;
-         else throw 'Name is Incorrect'
+         else throw 'Name is Incorrect';
        }
      get profilePic(){
          return this._profilePic;
